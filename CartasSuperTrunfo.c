@@ -1,7 +1,23 @@
 #include <stdio.h>
 
 int main() {
-    printf("Desafio Super Trunfo - Países\n"); // Sugestão: Defina variáveis separadas para cada atributo da cidade.
+    //Declaração das variáveis
+    char codigo[4]; //Codigo da cidade "A01"
+    char nome[50];
+    int população;
+    float area;
+    double pib;
+    int pontos_turisticos;
+
+    printf("Desafio Super Trunfo - Paises\n");
+    printf("Cadastro de Carta - Super Trunfo Paises\n");
+    printf("Digite o codigo da cidade: (ex: A01): ");
+    scanf("%3s", codigo);
+
+    printf("Digite o nome da cidade: ");
+    scanf (" %[^\n]", nome);
+
+    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
     // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
     
     // Cadastro das Cartas:
