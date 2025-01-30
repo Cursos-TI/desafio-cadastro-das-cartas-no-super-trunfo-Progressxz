@@ -1,51 +1,61 @@
 #include <stdio.h>
 
+#define MAX_CIDADES 100 // Limite máximo de cidades que podem ser cadastradas
+
 int main() {
-    //Declaração das variáveis
-    char codigo[4]; //Codigo da cidade "A01"
-    char nome[50];
-    int populacao;
-    float area;
-    double pib;
-    int pontos_turisticos;
-    
-    //introdução e cadastro das cartas
-    printf("Desafio Super Trunfo - Paises\n");
-    printf("Cadastro de Carta - Super Trunfo Paises\n");
+    int n; // Número de cidades a serem cadastradas
 
-    printf("Digite o codigo da cidade: (ex: A01): ");
-    scanf("%3s", codigo);
+    // Solicita ao usuário a quantidade de cidades
+    printf("Quantas cidades deseja cadastrar? ");
+    scanf("%d", &n);
 
-    printf("Digite o nome da cidade: ");
-    scanf (" %[^\n]", nome);  //lê uma string com espaços
-    getchar();
+    if (n <= 0 || n > MAX_CIDADES) {
+        printf("Número inválido de cidades. O máximo permitido é %d.\n", MAX_CIDADES);
+        return 1; // Sai do programa caso o número seja inválido
+    }
 
-    printf("Digite a população da cidade: ");
-    scanf ("%d", &populacao);
-    while (getchar() != '\n');
+    // Declaração dos vetores para armazenar as cidades
+    char codigo[n][4];
+    char nome[n][50];
+    int populacao[n];
+    int area[n]; 
+    double pib[n];
+    int pontos_turisticos[n];
 
-    printf("Digite a área da cidade: (km²) ");
-    scanf("%f", &area); 
-    while (getchar() != '\n');
+    // Cadastro das cidades
+    for (int i = 0; i < n; i++) {
+        printf("\nCadastro da cidade %d:\n", i + 1);
 
-    printf("Digite o PIB da cidade: (em bilhões): ");
-    scanf("%lf", &pib);  //lê o pib em bilhões
-    while (getchar() != '\n');
+        printf("Código da cidade (ex: A01): ");
+        scanf("%3s", codigo[i]);
 
-    printf("Digite o número de pontos turísticos: ");
-    scanf("%d",  &pontos_turisticos);
-    while (getchar() != '\n');
+        printf("Nome da cidade: ");
+        scanf(" %[^\n]", nome[i]); 
 
+        printf("População (Não use . ou , como separador de milhar/milhão): ");
+        scanf("%d", &populacao[i]);
 
-    //dados
-    printf("\nDados da carta cadastrada:\n");
-    printf("Código: %s\n", codigo);
-    printf("Nome: %s\n", nome);
-    printf("População: %d, habitantes\n", populacao);
-    printf("Área: %.2f km²\n", area);
-    printf("PIB: %.21f bilhões\n", pib);
-    printf("Pontos Turísticos: %d\n", pontos_turisticos);
+        printf("Área (km² Não use . ou , como separador de milhar/milhão): ");
+        scanf("%d", &area[i]);
 
+        printf("PIB (em bilhões): ");
+        scanf("%lf", &pib[i]);
+
+        printf("Número de pontos turísticos: ");
+        scanf("%d", &pontos_turisticos[i]);
+    }
+
+    // Exibir os dados cadastrados
+    printf("\n=== Cidades Cadastradas ===\n");
+    for (int i = 0; i < n; i++) {
+        printf("\nCidade %d:\n", i + 1);
+        printf("Código: %s\n", codigo[i]);
+        printf("Nome: %s\n", nome[i]);
+        printf("População: %d habitantes\n", populacao[i]);
+        printf("Área: %d km²\n", area[i]);
+        printf("PIB: %.2lf bilhões\n", pib[i]);
+        printf("Pontos Turísticos: %d\n", pontos_turisticos[i]);
+    }
 
     return 0;
 }
